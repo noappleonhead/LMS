@@ -3,23 +3,23 @@ import React from 'react';
 const HomePage = ({history}) => {
   return (
     <div>
-      <div className="ui inverted vertical masthead center aligned segment">
-        <div className="ui text container">
-          <h1 className="ui inverted stackable header">
-            <img
-              className="ui image massive"
-              src="/assets/logo.png"
-              alt="logo"
-            />
-            <div className="content">Re-vents</div>
-          </h1>
-          <h2>Do whatever you want to do</h2>
-          <div onClick={() => history.push('/events')} className="ui huge white inverted button">
-            Get Started
-            <i className="right arrow icon" />
-          </div>
-        </div>
-      </div>
+      <header class="homepage">
+            <div class="homepage__logo-box">
+                <img src="/assets/logo-full-white.png" alt="logo" className="homepage__logo" />
+            </div>
+
+            <div class="homepage__text-box">
+                <h1 class="heading-primary">
+                    <span class="heading-primary--main">  JR Academy</span>
+                    <span class="heading-primary--sub"> Learning Management System</span>
+                </h1>
+
+                <a href="#section-tours"onClick={() => history.push('/events')} 
+                className="btn btn--white btn--animated">Discover your tours</a>
+            </div>
+      </header>
+
+
       <div style={{ textAlign: 'center' }}>
         Icons made by{' '}
         <a href="http://www.freepik.com" title="Freepik">
@@ -42,3 +42,21 @@ const HomePage = ({history}) => {
 };
 
 export default HomePage;
+
+// <div className="ui inverted vertical masthead center aligned segment">
+// <div className="ui text container">
+// <h1 className="ui inverted stackable header">
+//   <img
+//     className="ui image massive"
+//     src="/assets/logo.png"
+//     alt="logo"
+//   />
+//   <div className="content">LMS</div>
+// </h1>
+// <h2>JR Academy Fullfill your dream</h2>
+// <div onClick={() => history.push('/events')} className="ui huge white inverted button">
+//   Get Started
+//   <i className="right arrow icon" />
+// </div>
+// </div>
+// </div>

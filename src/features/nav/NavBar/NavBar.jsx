@@ -57,6 +57,7 @@ class NavBar extends Component {
               content="Create Event"
             />
           </Menu.Item>}
+          
           {authenticated ? (
             <SignedInMenu profile={profile} signOut={this.handleSignOut} />
           ) : (
