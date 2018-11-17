@@ -5,30 +5,46 @@ body {
 @keyframes moveInLeft {
   0% {
     opacity: 0;
-    transform: translateX(-10rem); }
+    transform: translateX(-10rem);
+  }
+
   80% {
-    transform: translateX(1rem); }
+    transform: translateX(1rem);
+  }
+
   100% {
     opacity: 1;
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
 
 @keyframes moveInRight {
   0% {
     opacity: 0;
-    transform: translateX(10rem); }
+    transform: translateX(10rem);
+  }
+
   80% {
-    transform: translateX(-1rem); }
+    transform: translateX(-1rem);
+  }
+
   100% {
     opacity: 1;
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
 
 @keyframes moveInBottom {
   0% {
     opacity: 0;
-    transform: translateY(3rem); }
+    transform: translateY(3rem);
+  }
+
   100% {
     opacity: 1;
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
 
 
 html {
@@ -63,7 +79,7 @@ html {
 
 .homepage {
   height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)),url(../src/app/common/img/woga.jpg);
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../src/app/common/img/woga.jpg);
   background-size: cover;
   background-position: top;
   position: relative;
@@ -88,7 +104,10 @@ html {
   transform: translate(-50%, -50%);
   text-align: center;
 }
-.btn, .btn:link, .btn:visited {
+
+.btn,
+.btn:link,
+.btn:visited {
   text-transform: uppercase;
   text-decoration: none;
   padding: 1.5rem 4rem;
@@ -98,31 +117,43 @@ html {
   position: relative;
   font-size: 1.6rem;
   border: none;
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 .btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
-  .btn:hover::after {
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0; }
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
 
-.btn:active, .btn:focus {
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+.btn:active,
+.btn:focus {
   outline: none;
   transform: translateY(-1px);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
 
 .btn--white {
   background-color: #fff;
-  color: #777; }
-  .btn--white::after {
-    background-color: #fff; }
+  color: #777;
+}
+
+.btn--white::after {
+  background-color: #fff;
+}
 
 .btn--green {
   background-color: #55c57a;
-  color: #fff; }
-  .btn--green::after {
-    background-color: #55c57a; }
+  color: #fff;
+}
+
+.btn--green::after {
+  background-color: #55c57a;
+}
 
 .btn::after {
   content: "";
@@ -134,31 +165,99 @@ html {
   top: 0;
   left: 0;
   z-index: -1;
-  transition: all .4s; }
+  transition: all .4s;
+}
 
 .btn--animated {
   animation: moveInBottom .5s ease-out .75s;
-  animation-fill-mode: backwards; }
+  animation-fill-mode: backwards;
+}
 
-.btn-text:link, .btn-text:visited {
+.btn-text:link,
+.btn-text:visited {
   font-size: 1.6rem;
   color: #55c57a;
   display: inline-block;
   text-decoration: none;
   border-bottom: 1px solid #55c57a;
   padding: 3px;
-  transition: all .2s; }
+  transition: all .2s;
+}
 
 .btn-text:hover {
   background-color: #55c57a;
   color: #fff;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
-  transform: translateY(-2px); }
+  transform: translateY(-2px);
+}
 
 .btn-text:active {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  transform: translateY(0); }
+  transform: translateY(0);
+}
 
+.footer {
+  background-color: #333;
+  padding: 10rem 0;
+  font-size: 1.4rem;
+  color: #f7f7f7;
+}
+
+.footer__logo-box {
+  text-align: center;
+  margin-bottom: 8rem;
+}
+
+.footer__logo {
+  width: 15rem;
+  height: auto;
+}
+
+.footer__navigation {
+  border-top: 1px solid #777;
+  padding-top: 1rem;
+}
+
+.footer__list {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.footer__item {
+  display: flex;
+}
+
+.footer__item:not(:last-child) {
+  margin-right: 1.5rem;
+}
+
+.footer__link:link,
+.footer__link:visited {
+  color: #f7f7f7;
+  background-color: #333;
+  text-decoration: none;
+  text-transform: uppercase;
+  display: inline-block;
+  transition: all .2s;
+}
+
+.footer__link:hover,
+.footer__link:active {
+  color: #55c57a;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
+  transform: rotate(5deg) scale(1.3);
+}
+
+.footer__copyright {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  margin-top: 4rem;
+  border-top: 2px solid #777;
+  padding-top: 2rem;
+  width: 60%;
+}
 
 /*timepicker style*/
 .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list {
@@ -225,9 +324,14 @@ html {
 
 .ui.fixed.menu {
   background-image: linear-gradient(135deg,
+    rgba(109, 219, 90, 0.8),
+    rgba(40, 180, 133, 0.8),
+    rgba(36, 51, 112, 0.7))
+    /* background-image: linear-gradient(135deg,
     rgb(24, 42, 115) 0%,
     rgb(33, 138, 174) 69%,
-    rgb(32, 167, 172) 89%) !important;
+    rgb(32, 167, 172) 89%) !important; */
+
 }
 
 .ui.main.container,

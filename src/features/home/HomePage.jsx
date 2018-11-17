@@ -19,24 +19,28 @@ const HomePage = ({history}) => {
             </div>
       </header>
 
+      <footer class="footer" style={{ textAlign: 'center' }}>
+      <div class="row">
 
-      <div style={{ textAlign: 'center' }}>
-        Icons made by{' '}
-        <a href="http://www.freepik.com" title="Freepik">
-          Freepik
-        </a>{' '}
-        from{' '}
-        <a href="https://www.flaticon.com/" title="Flaticon">
-          www.flaticon.com
-        </a>{' '}
-        is licensed by{' '}
-        <a
-          href="http://creativecommons.org/licenses/by/3.0/"
-          title="Creative Commons BY 3.0"
-        >
-          CC 3.0 BY
-        </a>
+              <div class="footer__navigation">
+                  <ul class="footer__list">
+                      <li class="footer__item"><a href="#" class="footer__link">Company</a></li>
+                      <li class="footer__item"><a href="#" class="footer__link">Contact us</a></li>
+                      <li class="footer__item"><a href="#" class="footer__link">Carrers</a></li>
+                      <li class="footer__item"><a href="#" class="footer__link">Privacy policy</a></li>
+                      <li class="footer__item"><a href="#" class="footer__link">Terms</a></li>
+                  </ul>
+              </div>
+
+              <p class="footer__copyright">
+                  Built by <a href="#" class="footer__link">Rene Huang</a> for course <a href="#" class="footer__link">FULL STACK DEVELOPER course- JR Academy</a>.
+                  Copyright &copy; by Rene Huang. 100% allowed to use this webpage for both personal
+                  and commercial use, but NOT to claim it as your own design.
+              </p>
+
       </div>
+  </footer>
+
     </div>
   );
 };
