@@ -38,8 +38,8 @@ class NavBar extends Component {
       <Menu inverted fixed="top">
         <Container>
           <Menu.Item as={Link} to="/" header>
-            <img src="/assets/logo.png" alt="logo" />
-            Re-vents
+            <img src="/assets/logo-full-white.png" alt="logo" />
+            LMS
           </Menu.Item>
           <Menu.Item as={NavLink} to="/events" name="Events" />
           <Menu.Item as={NavLink} to="/test" name="Test" />
