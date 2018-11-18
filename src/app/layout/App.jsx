@@ -26,6 +26,7 @@ class App extends Component {
           render={() => (
             <div>
               <NavBar />
+
               <Container className="main">
                 <Switch>
                   <Route path="/events" component={EventDashboard} />
@@ -33,6 +34,7 @@ class App extends Component {
                   <Route path="/event/:id" component={EventDetailedPage} />
                   <Route path="/manage/:id" component={EventForm} />
                   <Route path="/people" component={PeopleDashboard} />
+                  <Route path='/students' component={StudentDashboard}
                   <Route path="/profile/:id" component={UserDetailedPage} />
                   <Route path="/settings" component={SettingsDashboard} />
                   <Route path="/createEvent" component={EventForm} />

@@ -14,7 +14,7 @@ const HomePage = ({history}) => {
                     <span class="heading-primary--sub"> Learning Management System</span>
                 </h1>
 
-                <a href="#section-tours"onClick={() => history.push('/events')} 
+                <a href="#section-tours" onClick={() => history.push('/events')} 
                 className="btn btn--white btn--animated">Discover your tours</a>
             </div>
       </header>
@@ -24,7 +24,7 @@ const HomePage = ({history}) => {
 
               <div class="footer__navigation">
                   <ul class="footer__list">
-                      <li class="footer__item"><a href="#" class="footer__link">Company</a></li>
+                      <li class="footer__item"><a href="#" class="footer__link" onClick={() => history.push('/events')}>Company</a></li>
                       <li class="footer__item"><a href="#" class="footer__link">Contact us</a></li>
                       <li class="footer__item"><a href="#" class="footer__link">Carrers</a></li>
                       <li class="footer__item"><a href="#" class="footer__link">Privacy policy</a></li>
@@ -39,7 +39,7 @@ const HomePage = ({history}) => {
               </p>
 
       </div>
-  </footer>
+  </footer>n x
 
     </div>
   );
