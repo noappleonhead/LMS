@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const SignedInMenu = ({signOut, profile}) => {
   return (
     <Menu.Item position="right">
-      <Image avatar spaced="right" src={profile.photoURL || "/assets/user.png"} />
+      <Image avatar spaced="right" src={profile.avatarUrl || "/assets/user.png"} />
       <Dropdown pointing="top left" text={profile.displayName}>
         <Dropdown.Menu>
           <Dropdown.Item text="Create Event" icon="plus" />

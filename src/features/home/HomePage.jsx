@@ -1,5 +1,5 @@
+/* eslint-disable jsx-a11y/href-no-hash */
 import React from 'react';
-
 const HomePage = ({history}) => {
   return (
     <div>
@@ -12,10 +12,11 @@ const HomePage = ({history}) => {
                 <h1 class="heading-primary">
                     <span class="heading-primary--main">  JR Academy</span>
                     <span class="heading-primary--sub"> Learning Management System</span>
+                    <span class="heading-primary--sub"> Manage WORK & SOCIAL together</span>
                 </h1>
 
                 <a href="#section-tours" onClick={() => history.push('/events')} 
-                className="btn btn--white btn--animated">Discover your tours</a>
+                className="btn btn--white btn--animated">Discover your tours!</a>
             </div>
       </header>
 
@@ -24,7 +25,7 @@ const HomePage = ({history}) => {
 
               <div class="footer__navigation">
                   <ul class="footer__list">
-                      <li class="footer__item"><a href="#" class="footer__link" onClick={() => history.push('/events')}>Company</a></li>
+                      <li class="footer__item"><a href="#" class="footer__link" onClick={() => history.push('/events')}> Company</a></li>
                       <li class="footer__item"><a href="#" class="footer__link">Contact us</a></li>
                       <li class="footer__item"><a href="#" class="footer__link">Carrers</a></li>
                       <li class="footer__item"><a href="#" class="footer__link">Privacy policy</a></li>
@@ -39,7 +40,7 @@ const HomePage = ({history}) => {
               </p>
 
       </div>
-  </footer>n x
+  </footer>
 
     </div>
   );

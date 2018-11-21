@@ -11,7 +11,7 @@ import EventDetailedPage from '../../features/event/EventDetailed/EventDetailedP
 import HomePage from '../../features/home/HomePage';
 import TestComponent from '../../features/testarea/TestComponent';
 import ModalManager from '../../features/modals/ModalManager';
-
+import StudentDashboard from '../../features/student/StudentDashboard';
 class App extends Component {
   render() {
     return (
@@ -30,11 +30,11 @@ class App extends Component {
               <Container className="main">
                 <Switch>
                   <Route path="/events" component={EventDashboard} />
-                  <Route path="/test" component={TestComponent} />
                   <Route path="/event/:id" component={EventDetailedPage} />
                   <Route path="/manage/:id" component={EventForm} />
                   <Route path="/people" component={PeopleDashboard} />
-                  <Route path='/students' component={StudentDashboard}
+                  <Route path='/students' component={StudentDashboard} />
+                  <Route path="/test" component={TestComponent} />
                   <Route path="/profile/:id" component={UserDetailedPage} />
                   <Route path="/settings" component={SettingsDashboard} />
                   <Route path="/createEvent" component={EventForm} />

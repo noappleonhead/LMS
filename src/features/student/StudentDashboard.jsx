@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { DataTable } from "react-data-components";
+import 'react-data-components/css/table-twbs.css';
+import { Header, Segment } from "semantic-ui-react";
 
 var columns = [
   { title: "Id", prop: "id" },
@@ -110,15 +112,20 @@ export default class StudentList extends Component {
 
   render() {
     return (
-      <DataTable
-        className="container"
-        keys="id"
-        columns={columns}
-        initialData={studentData}
-        initialPageLength={5}
-        initialSortBy={{ prop: "city", order: "descending" }}
-        pageLengthOptions={[5, 20, 50]}
-      />
+      <div>
+        <Header attached="top" content="Student Lists" className="heading-primary--sub" />
+        <Segment attached>
+          <DataTable
+            className="container"
+            keys="id"
+            columns={columns}
+            initialData={studentData}
+            initialPageLength={5}
+            initialSortBy={{ prop: "city", order: "descending" }}
+            pageLengthOptions={[5, 20, 50]}
+          />
+        </Segment>
+      </div>
     );
   }
 }

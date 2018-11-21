@@ -10,7 +10,7 @@ export const updateProfile = (user) =>
     }
 
     try {
-      await firebase.updateProfile(updatedUser);
+      await firebase.updateProfile(updatedUser);// firebase method
       toastr.success('Success', 'Profile updated')
     } catch (error) {
       console.log(error)

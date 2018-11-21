@@ -51,6 +51,19 @@ html {
   font-size: 75%;
 }
 
+
+.container{
+    width: inherit;
+}
+
+.checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
+  margin-left: 1px;
+}
+
+.Table__container{
+ width: inherit; 
+}
+
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
