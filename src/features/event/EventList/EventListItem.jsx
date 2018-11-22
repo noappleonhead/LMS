@@ -3,6 +3,7 @@ import { Segment, Item, Icon, List, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom'
 import EventListAttendee from './EventListAttendee'
 import format from 'date-fns/format'
+import { objectToArray } from '../../../app/common/util/helper.js'
 
 class EventListItem extends Component {
   render() {
@@ -30,7 +31,7 @@ class EventListItem extends Component {
         </Segment>
         <Segment secondary>
           <List horizontal>
-          {event.attendees && event.attendees.map((attendee) => (
+          {event.attendees && objectToArray(event.attendees).map((attendee) => (
             <EventListAttendee key={attendee.id} attendee={attendee}/>
           ))}
 

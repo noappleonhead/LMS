@@ -48,9 +48,13 @@ body {
 
 
 html {
-  font-size: 75%;
+  font-size: 65%;
 }
 
+.ui.mini.modal.transition.visible.active{
+  right:auto;
+  bottom:auto
+}
 
 .container{
     width: inherit;

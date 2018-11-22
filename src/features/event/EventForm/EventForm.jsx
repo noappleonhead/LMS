@@ -2,8 +2,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
+import { withFirestore } from 'react-redux-firebase';
 import moment from 'moment';
-import cuid from 'cuid';
 import Script from 'react-load-script';
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import { Segment, Form, Button, Grid, Header } from 'semantic-ui-react';
@@ -21,16 +21,15 @@ import DateInput from '../../../app/common/form/DateInput';
 import PlaceInput from '../../../app/common/form/PlaceInput';
 
 const mapState = (state, ownProps) => {
-  const eventId = ownProps.match.params.id;
-
   let event = {};
 
-  if (eventId && state.events.length > 0) {
-    event = state.events.filter(event => event.id === eventId)[0];
+  if (state.firestore.ordered.events && state.firestore.ordered.events[0]) {
+    event = state.firestore.ordered.events[0];
   }
 
   return {
-    initialValues: event
+    initialValues: event,
+    event
   };
 };
 
@@ -69,6 +68,11 @@ class EventForm extends Component {
     scriptLoaded: false
   };
 
+  async componentDidMount() {
+    const {firestore, match} = this.props;
+    await firestore.setListener(`events/${match.params.id}`);
+  }
+
   handleScriptLoaded = () => this.setState({ scriptLoaded: true });
 
   handleCitySelect = selectedCity => {
@@ -98,19 +102,13 @@ class EventForm extends Component {
   };
 
   onFormSubmit = values => {
-    values.date = moment(values.date).format();
     values.venueLatLng = this.state.venueLatLng;
     if (this.props.initialValues.id) {
       this.props.updateEvent(values);
       this.props.history.goBack();
     } else {
-      const newEvent = {
-        ...values,
-        id: cuid(),
-        hostPhotoURL: '/assets/user.png',
-        hostedBy: 'Bob'
-      };
-      this.props.createEvent(newEvent);
+      
+      this.props.createEvent(values);
       this.props.history.push('/events');
     }
   };
@@ -196,8 +194,8 @@ class EventForm extends Component {
   }
 }
 
-export default connect(mapState, actions)(
+export default withFirestore(connect(mapState, actions)(
   reduxForm({ form: 'eventForm', enableReinitialize: true, validate })(
     EventForm
   )
-);
+));

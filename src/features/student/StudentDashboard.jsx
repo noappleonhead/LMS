@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { DataTable } from "react-data-components";
 import 'react-data-components/css/table-twbs.css';
 import { Header, Segment } from "semantic-ui-react";
+// import 'bootstrap-css-only/css/bootstrap.min.css';
+// import 'font-awesome/css/font-awesome.min.css';
 
 var columns = [
   { title: "Id", prop: "id" },
