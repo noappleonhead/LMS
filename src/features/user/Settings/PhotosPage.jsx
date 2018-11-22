@@ -118,10 +118,10 @@ class PhotosPage extends Component {
             <Card key={photo.id}>
             <Image src={photo.url} />
             <div className="ui two buttons">
-              <Button onClick={this.handleSetPhoto(photo)} basic color="green">
+              <Button disabled={loading} onClick={this.handleSetPhoto(photo)} basic color="green">
                 Main
               </Button>
-              <Button onClick={this.handlePhotoDelete(photo)} basic icon="trash" color="red" />
+              <Button loading={loading} onClick={this.handlePhotoDelete(photo)} basic icon="trash" color="red" />
             </div>
           </Card>
           ))}
