@@ -7,7 +7,7 @@ import EventDetailedInfo from './EventDetailedInfo';
 import EventDetailedChat from './EventDetailedChat';
 import EventDetailedSidebar from './EventDetailedSidebar';
 import { objectToArray } from '../../../app/common/util/helper.js'
-
+import { cancelGoingToEvent, goingToEvent } from '../../user/userActions';
 const mapState = (state, ownProps) => {
   let event = {};
   if (state.firestore.ordered.events && state.firestore.ordered.events[0]) {
@@ -19,6 +19,10 @@ const mapState = (state, ownProps) => {
   };
 }
 
+const actions ={
+  goingToEvent,
+  cancelGoingToEvent
+}
 class EventDetailedPage extends Component {
   async componentDidMount(){
     const {firestore, match} = this.props;
@@ -26,12 +30,14 @@ class EventDetailedPage extends Component {
     console.log(event);
   }
   render() {
-  const {event} = this.props;
+  const {event, auth, goingToEvent, cancelGoingToEvent} = this.props;
   const attendees = event && event.attendees && objectToArray(event.attendees);
+  const isHost = event.hostUid === auth.uid;
+  const isGoing = attendees && attendees.some(x => x.id === auth.uid);
     return (
       <Grid>
       <Grid.Column width={10}>
-        <EventDetailedHeader event={event} />
+        <EventDetailedHeader event={event} isHost={isHost} isGoing={isGoing} goingToEvent={goingToEvent} cancelGoingToEvent={cancelGoingToEvent} />
         <EventDetailedInfo event={event} />
         <EventDetailedChat />
       </Grid.Column>
@@ -43,4 +49,4 @@ class EventDetailedPage extends Component {
   }
 }
 
-export default withFirestore(connect(mapState)(EventDetailedPage));
+export default withFirestore(connect(mapState, actions)(EventDetailedPage));
