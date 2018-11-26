@@ -100,39 +100,27 @@ export const getEventsForDashboard = lastEvent => async (dispatch, getState) => 
   const eventsRef = firestore.collection('events');
   try {
     dispatch(asyncActionStart());
-    let startAfter =
-      lastEvent &&
-      (await firestore
-        .collection('events')
-        .doc(lastEvent.id)
-        .get());
+    let startAfter = lastEvent &&(await firestore.collection('events').doc(lastEvent.id).get());// get the one after the lastevent
     let query;
 
-    lastEvent
-      ? (query = eventsRef
-          .where('date', '>=', today)
-          .orderBy('date')
-          .startAfter(startAfter)
-          .limit(2))
-      : (query = eventsRef
-          .where('date', '>=', today)
-          .orderBy('date')
-          .limit(2));
+    // which query to use depends on wheather we have lastEvent or not
+    lastEvent ? (query = eventsRef.where('date', '>=', today).orderBy('date').startAfter(startAfter).limit(2))
+      : (query = eventsRef.where('date', '>=', today).orderBy('date').limit(2));
     
     let querySnap = await query.get();
 
+    //count of events
     if (querySnap.docs.length === 0) {
       dispatch(asyncActionFinish());
       return querySnap;
     }
 
-    // get array of events
+    // if evnets > 0 then  get array of events and push to reducer
     let events = [];
     for (let i = 0; i < querySnap.docs.length; i++) {
       let evt = { ...querySnap.docs[i].data(), id: querySnap.docs[i].id };
       events.push(evt);
     }
-    
     dispatch({ type: FETCH_EVENTS, payload: { events } });
     dispatch(asyncActionFinish());
     return querySnap;
