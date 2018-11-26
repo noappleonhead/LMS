@@ -42,11 +42,10 @@ class NavBar extends Component {
             LMS
           </Menu.Item>
           <Menu.Item as={NavLink} to="/events" name="Events" />
-          <Menu.Item as={NavLink} to="/students" name="Student List" />
           <Menu.Item as={NavLink} to="/test" name="Test" />
-          {authenticated &&
-          <Menu.Item as={NavLink} to="/people" name="People" />}
-
+          {authenticated && <Menu.Item as={NavLink} to="/courses" name="Courses" />}
+          {authenticated && <Menu.Item as={NavLink} to="/students" name="Students List" />}
+          {authenticated && <Menu.Item as={NavLink} to="/people" name="People" />}
           {authenticated &&
           <Menu.Item>
             <Button

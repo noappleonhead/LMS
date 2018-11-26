@@ -13,7 +13,7 @@ const actions = {
 
 const LoginForm = ({login, handleSubmit, error, socialLogin}) => {
   return (
-    <Form size="large" onSubmit={handleSubmit(login)}>
+    <Form size="large" onSubmit={handleSubmit(login)} >
       <Segment>
         <Field
           name="email"
@@ -22,13 +22,13 @@ const LoginForm = ({login, handleSubmit, error, socialLogin}) => {
           placeholder="Email Address"
         />
         <Field
-          name="password"
+          name="password" 
           component={TextInput}
           type="password"
           placeholder="password"
         />
         {error && <Label basic color='red'>{error}</Label>}
-        <Button fluid size="large" color="teal">
+        <Button fluid size="large" color="teal" >
           Login
         </Button>
         <Divider horizontal>Or</Divider>

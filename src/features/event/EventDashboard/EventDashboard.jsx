@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Grid } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { firestoreConnect, isLoaded, isEmpty } from 'react-redux-firebase';
-import { deleteEvent } from '../eventActions';
+import { getEventsForDashboard } from '../eventActions';
 import EventList from '../EventList/EventList';
 import LoadingComponent from '../../../app/layout/LoadingComponent';
 import EventActivity from '../EventActivity/EventActivity';
@@ -13,13 +13,22 @@ const mapState = state => ({
 });
 
 const actions = {
-  deleteEvent
+  getEventsForDashboard
 };
 
 class EventDashboard extends Component {
   handleDeleteEvent = eventId => () => {
     this.props.deleteEvent(eventId);
   };
+
+  // updated the loaded events states
+  // componentWillReceiveProps(nextProps) {
+  //   if (this.props.events !== nextProps.events) {
+  //     this.setState({
+  //       loadedEvents: [...this.state.loadedEvents, ...nextProps.events]
+  //     });
+  //   }
+  // }
 
   render() {
     const { events } = this.props;
@@ -28,7 +37,7 @@ class EventDashboard extends Component {
     return (
       <Grid>
         <Grid.Column width={10}>
-          <EventList deleteEvent={this.handleDeleteEvent} events={events} />
+          <EventList events={events} />
         </Grid.Column>
         <Grid.Column width={6}>
           <EventActivity />

@@ -12,6 +12,11 @@ import HomePage from '../../features/home/HomePage';
 import TestComponent from '../../features/testarea/TestComponent';
 import ModalManager from '../../features/modals/ModalManager';
 import StudentDashboard from '../../features/student/StudentDashboard';
+import CourseDashboard from '../../features/course/CourseDashboard';
+import createBrowserHistory from 'history/createBrowserHistory'
+
+export const history = createBrowserHistory()
+
 class App extends Component {
   render() {
     return (
@@ -29,7 +34,7 @@ class App extends Component {
 
               <Container className="main">
                 <Switch>
-                  <Route path="/events" component={EventDashboard} />
+                  <Route path="/events" component={EventDashboard} history={history}/>
                   <Route path="/event/:id" component={EventDetailedPage} />
                   <Route path="/manage/:id" component={EventForm} />
                   <Route path="/people" component={PeopleDashboard} />
@@ -38,6 +43,7 @@ class App extends Component {
                   <Route path="/profile/:id" component={UserDetailedPage} />
                   <Route path="/settings" component={SettingsDashboard} />
                   <Route path="/createEvent" component={EventForm} />
+                  <Route path="/courses" component={CourseDashboard} />
                 </Switch>
               </Container>
             </div>

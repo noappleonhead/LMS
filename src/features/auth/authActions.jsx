@@ -1,15 +1,19 @@
 import { SubmissionError, reset } from 'redux-form'
 import { closeModal } from '../modals/modalActions'
 import { toastr } from 'react-redux-toastr'
+import { asyncActionError, asyncActionStart, asyncActionFinish } from '../async/asyncActions'
 
 export const login = (creds) => {
   return async (dispatch, getState, {getFirebase})=> {
     const firebase = getFirebase();
     try {
+      dispatch(asyncActionStart);
       await firebase.auth().signInWithEmailAndPassword(creds.email, creds.password);
+      dispatch(asyncActionFinish)
       dispatch(closeModal())
     } catch (error) {
       console.log(error);
+      dispatch(asyncActionError);
       throw new SubmissionError({
         _error: 'Login failed'
       })
