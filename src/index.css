@@ -379,3 +379,11 @@ html {
   padding-bottom: 0 !important;
   padding-left: 2em !important;
 }
+
+.ui.feed>.event>.label .img{
+  width: 200%;;
+}
+
+#imgWidth{
+  width: 200%;;
+}
