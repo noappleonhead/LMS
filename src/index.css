@@ -380,9 +380,9 @@ html {
   padding-left: 2em !important;
 }
 
-.ui.feed>.event>.label .img{
+/* .ui.feed>.event>.label .img{
   width: 200%;;
-}
+} */
 
 #imgWidth{
   width: 200%;;

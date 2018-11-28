@@ -28,7 +28,8 @@ const mapState = (state, ownProps) => {
 
   return {
     initialValues: event,
-    event
+    event,
+    loading:state.async.loading
   };
 };
 
@@ -106,13 +107,13 @@ class EventForm extends Component {
       })
   };
 
-  onFormSubmit = values => {
+  onFormSubmit = async values => {
     values.venueLatLng = this.state.venueLatLng;
     if (this.props.initialValues.id) {
       if (Object.keys(values.venueLatLng).length === 0) {
         values.venueLatLng = this.props.event.venueLatLng
       }
-      this.props.updateEvent(values);
+      await this.props.updateEvent(values);
       this.props.history.goBack();
     } else {
       this.props.createEvent(values);
@@ -121,7 +122,7 @@ class EventForm extends Component {
   };
 
   render() {
-    const { invalid, submitting, pristine, event, cancelToggle  } = this.props;
+    const { loading, invalid, submitting, pristine, event, cancelToggle  } = this.props;
     return (
       <Grid>
         <Script
@@ -185,12 +186,12 @@ class EventForm extends Component {
               />
               <Button
                 disabled={invalid || submitting || pristine}
-                positive
+                positive loading={loading}
                 type="submit"
               >
                 Submit
               </Button>
-              <Button onClick={this.props.history.goBack} type="button">
+              <Button onClick={this.props.history.goBack} disabled={loading} type="button">
                 Cancel
               </Button>
               <Button
