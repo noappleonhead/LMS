@@ -4,16 +4,28 @@ import {connect} from 'react-redux';
 
 import LoginForm from '../auth/Login/LoginForm';
 import {closeModal} from "./modalActions";
+import { withRouter } from "react-router-dom";
 
 const actions = {closeModal};
 
 class LoginModal extends Component {
+    handleCloseModal = () => {
+        if (this.props.location.pathname.includes('/events')) {
+            this.props.closeModal();
+        }
+        else {
+        //   this.props.history.goBack();
+          this.props.history.push("/events")
+          this.props.closeModal();
+        }
+      }
+
     render() {
         return (
             <Modal
                 size='mini'
                 open={true}
-                onClose={this.props.closeModal}
+                onClose={this.handleCloseModal}
             >
                 <Modal.Header>
                     Login to Re-vents
@@ -28,4 +40,4 @@ class LoginModal extends Component {
     }
 }
 
-export default connect(null, actions)(LoginModal);
+export default withRouter(connect(null, actions)(LoginModal));
