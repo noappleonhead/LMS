@@ -14,7 +14,7 @@ import ModalManager from '../../features/modals/ModalManager';
 import StudentDashboard from '../../features/student/StudentDashboard';
 import CourseDashboard from '../../features/course/CourseDashboard';
 import createBrowserHistory from 'history/createBrowserHistory'
-
+import { UserIsAuthenticated } from'../../features/auth/authWrapper'
 export const history = createBrowserHistory()
 
 class App extends Component {
@@ -36,14 +36,14 @@ class App extends Component {
                 <Switch>
                   <Route path="/events" component={EventDashboard} history={history}/>
                   <Route path="/event/:id" component={EventDetailedPage} />
-                  <Route path="/manage/:id" component={EventForm} />
-                  <Route path="/people" component={PeopleDashboard} />
+                  <Route path="/manage/:id" component={UserIsAuthenticated(EventForm)} />
+                  <Route path="/people" component={UserIsAuthenticated(PeopleDashboard)} />
+                  <Route path="/profile/:id" component={UserIsAuthenticated(UserDetailedPage)} />
+                  <Route path="/settings" component={UserIsAuthenticated(SettingsDashboard)} />
+                  <Route path="/createEvent" component={UserIsAuthenticated(EventForm)} />
+                  <Route path="/courses" component={CourseDashboard} />
                   <Route path='/students' component={StudentDashboard} />
                   <Route path="/test" component={TestComponent} />
-                  <Route path="/profile/:id" component={UserDetailedPage} />
-                  <Route path="/settings" component={SettingsDashboard} />
-                  <Route path="/createEvent" component={EventForm} />
-                  <Route path="/courses" component={CourseDashboard} />
                 </Switch>
               </Container>
             </div>

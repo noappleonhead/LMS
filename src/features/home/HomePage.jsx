@@ -16,7 +16,7 @@ const mapState = state => ({
 
 class HomePage extends Component {
   handleSignIn = () => {
-    this.props.openModal("LoginModal");
+    this.props.openModal("UnauthModal");
   };
 
   login() {
