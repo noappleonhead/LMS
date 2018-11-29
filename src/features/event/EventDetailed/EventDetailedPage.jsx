@@ -11,6 +11,8 @@ import { objectToArray, createDataTree } from '../../../app/common/util/helper.j
 import { cancelGoingToEvent, goingToEvent } from '../../user/userActions';
 import { addEventComment } from '../eventActions';
 import { openModal } from '../../modals/modalActions';
+import { toastr } from 'react-redux-toastr'
+import LoadingComponent from '../../../app/layout/LoadingComponent'
 
 const mapState = (state, ownProps) => {
   let event = {};
@@ -18,6 +20,7 @@ const mapState = (state, ownProps) => {
     event = state.firestore.ordered.events[0];
   }
   return {
+    requesting: state.firestore.status.requesting,
     event, 
     loading:state.async.loading,
     auth: state.firebase.auth,
@@ -32,9 +35,20 @@ const actions ={
   openModal
 }
 class EventDetailedPage extends Component {
+  state = {
+    initialLoading: true
+  }
   async componentDidMount() {
     const { firestore, match } = this.props;
+    let event = await firestore.get(`events/${match.params.id}`);
+    if (!event.exists) {
+      toastr.error('Not found', 'This is not the event you are looking for')
+      this.props.history.push('/error')
+    }
     await firestore.setListener(`events/${match.params.id}`);
+    this.setState({
+      initialLoading: false
+    })
   }
 
   async componentWillUnmount() {
@@ -43,12 +57,17 @@ class EventDetailedPage extends Component {
   }
 
   render() {
-  const { openModal, event, auth, goingToEvent, cancelGoingToEvent, addEventComment, eventChat, loading} = this.props;
-  const attendees = event && event.attendees && objectToArray(event.attendees);
+  const { requesting, match, openModal, event, auth, goingToEvent, cancelGoingToEvent, addEventComment, eventChat, loading} = this.props;
+  const attendees = event && event.attendees && objectToArray(event.attendees).sort(function(a,b) {
+    return a.joinDate - b.joinDate
+  })
   const isHost = event.hostUid === auth.uid;
   const isGoing = attendees && attendees.some(x => x.id === auth.uid);
   const chatTree = !isEmpty(eventChat) && createDataTree(eventChat)
   const authenticated = auth.isLoaded && !auth.isEmpty;
+  const loadingEvent = requesting[`events/${match.params.id}`]
+
+  if (loadingEvent || this.state.initialLoading) return <LoadingComponent inverted={true}/>
 
     return (
       <Grid>
@@ -68,5 +87,5 @@ class EventDetailedPage extends Component {
 export default compose(
   withFirestore,
   connect(mapState, actions),
-  firebaseConnect(props => [`event_chat/${props.match.params.id}`])
+  firebaseConnect(props =>props.auth.isLoaded && !props.auth.isEmpty && [`event_chat/${props.match.params.id}`])
 )(EventDetailedPage);

@@ -13,8 +13,10 @@ import TestComponent from '../../features/testarea/TestComponent';
 import ModalManager from '../../features/modals/ModalManager';
 import StudentDashboard from '../../features/student/StudentDashboard';
 import CourseDashboard from '../../features/course/CourseDashboard';
-import createBrowserHistory from 'history/createBrowserHistory'
-import { UserIsAuthenticated } from'../../features/auth/authWrapper'
+import createBrowserHistory from 'history/createBrowserHistory';
+import NotFound from './NotFound';
+import { UserIsAuthenticated } from'../../features/auth/authWrapper';
+
 export const history = createBrowserHistory()
 
 class App extends Component {
@@ -44,6 +46,10 @@ class App extends Component {
                   <Route path="/courses" component={CourseDashboard} />
                   <Route path='/students' component={StudentDashboard} />
                   <Route path="/test" component={TestComponent} />
+                  <Route path="/error" component={NotFound} />
+                  <Route component={NotFound} />
+
+
                 </Switch>
               </Container>
             </div>

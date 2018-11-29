@@ -36,7 +36,7 @@ class EventActivityItem extends Component {
         return (
             <Feed.Event>
                 <Feed.Label>
-                    <img id="imgWidth" src={activity.photoURL || '/assets/user.png'} alt=''/>
+                    <img src={activity.photoURL || '/assets/user.png'} alt="" />
                 </Feed.Label>
                 <Feed.Content>
                     <Feed.Summary>

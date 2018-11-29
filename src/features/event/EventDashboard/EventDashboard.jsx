@@ -7,13 +7,13 @@ import EventList from '../EventList/EventList';
 import LoadingComponent from '../../../app/layout/LoadingComponent';
 import EventActivity from '../EventActivity/EventActivity';
 
-const query = [{
-  collection:'activity',
-  orderBy:['timestamp','desc'],
-  limit:5
-
-}]
-
+const query = [
+  {
+    collection: 'activity',
+    orderBy: ['timestamp', 'desc'],
+    limit: 5
+  }
+]
 const mapState = state => ({
   events: state.events,
   loading: state.async.loading,
