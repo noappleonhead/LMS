@@ -14,6 +14,7 @@ const query = [
     limit: 5
   }
 ]
+
 const mapState = state => ({
   events: state.events,
   loading: state.async.loading,
